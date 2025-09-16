@@ -1,0 +1,20 @@
+# Пароли и секреты
+.env
+.env.local
+*.key
+*.pem
+
+# Временные файлы
+*.tmp
+*.log
+__pycache__/
+*.pyc
+
+# Папки которые не нужны в Git
+logs/
+node_modules/
+venv/
+.vscode/
+.DS_Store
+Thumbs.db
+ 
