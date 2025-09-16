@@ -34,6 +34,8 @@ import schedule
 import threading
 import time
 import random
+import os
+from supabase import create_client
 
 # Configuration
 SECRET_KEY = os.getenv("SECRET_KEY", "financial-ai-super-secret-key-for-development-change-in-production")
@@ -41,10 +43,9 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 1440  # 24 hours
 
 # Database setup
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://financial_ai_user:password@localhost/financial_ai_db")
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+supabase_url = os.getenv("SUPABASE_URL")
+supabase_key = os.getenv("SUPABASE_SERVICE_KEY")
+supabase = create_client(supabase_url, supabase_key)
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
