@@ -1,0 +1,19 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Upload static files
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: static
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v2
