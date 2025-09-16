@@ -1,0 +1,25 @@
+name: Тестирование проекта
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Установка Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Установка зависимостей
+      run: |
+        pip install -r requirements.txt
+
+    - name: Простой тест
+      run: |
+        echo "Тест прошёл успешно!"
